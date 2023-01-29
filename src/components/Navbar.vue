@@ -20,7 +20,9 @@ const links: ILink[] = [
     <ul class="flex items-center h-12 gap-5 bg-red-100 justify-center">
       <li v-for="link in links">
 
-        <router-link :to="{name:link.name}" class="underline cursor-pointer">
+        <router-link
+            :data-testid="link.name"
+            :to="{name:link.name}" class="underline cursor-pointer">
           {{ link.title }}
         </router-link>
 
