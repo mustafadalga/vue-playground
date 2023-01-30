@@ -1,25 +1,39 @@
-import { describe, it, expect } from "vitest";
-import { mount, RouterLinkStub } from "@vue/test-utils";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, fireEvent } from "@testing-library/vue";
+
+const mockUseRouter = {
+    push: vi.fn()
+}
+
+vi.doMock("vue-router", async () => {
+    const original: any = await vi.importActual("vue-router");
+    return {
+        ...original,
+        useRouter: () => mockUseRouter
+    };
+});
 import Navbar from "./Navbar.vue";
 
+
+beforeEach(() => {
+    mockUseRouter.push.mockClear();
+});
+
+
 describe("Navbar.vue", () => {
-    it("Should router-link has a forward route name", async () => {
+    it("Should router be call once when the user clicks the button", async () => {
+        const {getByTestId} = render(Navbar);
+        const reactButton = getByTestId("react");
+        await fireEvent.click(reactButton);
+        expect(mockUseRouter.push).toHaveBeenCalledTimes(1);
+    });
 
-        const wrapper = mount(Navbar, {
-            global: {
-                stubs: {
-                    "router-link": RouterLinkStub
-                },
-            }
-        });
-
-        const expectedRedirectRoute = {name: "vue"};
-
-        const routerLinks = wrapper.findAllComponents(RouterLinkStub);
-        const firstRouteLink = routerLinks[0];
-        const resultRoute = firstRouteLink.props("to");
-
-        expect(resultRoute).toEqual(expectedRedirectRoute);
+    it("Should redirect to react page when user clicks the button", async () => {
+        const { getByTestId } = render(Navbar);
+        const reactButton = getByTestId("react");
+        await fireEvent.click(reactButton);
+        const expectedRoute = {name: "react"};
+        expect(mockUseRouter.push).toHaveBeenCalledWith(expectedRoute);
     });
 });
 
