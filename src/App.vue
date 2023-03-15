@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import Card from "@/components/Card.vue";
-import data from "@/data";
+import { ref } from "vue";
+import Input from "@/components/Input.vue";
+
+const searchText = ref<string>("");
 </script>
 
 <template>
-  <div id="app" class="p-10">
-    <Card :card="data" class="max-w-md" />
+  <div id="app" class="p-10 grid gap-4">
+    <Input @input="searchText=$event"/>
+
+    <h1 class="text-4xl">{{ searchText }}</h1>
   </div>
 </template>
