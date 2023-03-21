@@ -1,14 +1,31 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Input from "@/components/Input.vue";
+import Sidebar from "@/components/Sidebar.vue";
+import Post from "@/components/Post.vue";
+import type { IPost } from "@/types";
 
-const searchText = ref<string>("");
+const posts = ref<IPost[]>([]);
+
+fetchPosts();
+
+async function fetchPosts() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  posts.value = await response.json();
+}
 </script>
 
 <template>
-  <div id="app" class="p-10 grid gap-4">
-    <Input @input="searchText=$event"/>
+  <main class="grid grid-cols-[12rem_1fr] w-full max-w-screen-2xl mx-auto bg-white">
+    <section class="bg-blue-100	sticky top-0 h-screen">
+      <Sidebar/>
+    </section>
 
-    <h1 class="text-4xl">{{ searchText }}</h1>
-  </div>
+
+    <section class="text-5xl py-16 px-8 lg:px-10">
+      <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
+        <Post v-for="post in posts"
+              :post="post"/>
+      </div>
+    </section>
+  </main>
 </template>
