@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Sidebar from "@/components/Sidebar.vue";
 import Post from "@/components/Post.vue";
 import type { IPost } from "@/types";
+import Banner from "@/components/Banner.vue";
 
 const posts = ref<IPost[]>([]);
+const searchText = ref<string>("");
+const postList = computed<IPost[]>(() => {
+  if (searchText.value.length > 3) {
+    return posts.value.filter(post => post.title.includes(searchText.value) || post.body.includes(searchText.value))
+  }
+  return posts.value;
+});
 
 fetchPosts();
 
@@ -21,11 +29,15 @@ async function fetchPosts() {
     </section>
 
 
-    <section class="text-5xl py-16 px-8 lg:px-10">
-      <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
-        <Post v-for="post in posts"
-              :post="post"/>
-      </div>
+    <section>
+      <Banner @input="searchText=$event" class="sticky top-0 z-10"/>
+      <section class="py-16 px-8 lg:px-10">
+        <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-5">
+          <Post v-for="post in postList"
+                :post="post"/>
+        </div>
+      </section>
+
     </section>
   </main>
 </template>
