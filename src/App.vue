@@ -1,20 +1,28 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import { RouterView, useRoute } from "vue-router";
+<script>
+import { usePostsStore } from "@/store";
+import { useFetchPosts } from "@/composables"
+import { mapState } from 'pinia'
 
-const route = useRoute();
-const layout = computed(() => route.meta.layout);
+export default {
+    computed: {
+        ...mapState(usePostsStore, [ 'getPosts' ]),
+    },
+    methods: {
+        fetchData () {
+            const { fetchPosts } = useFetchPosts();
+            fetchPosts()
+        }
+    }
+}
 </script>
 
+
 <template>
-  <div id="app" class="grid h-screen">
-    <template v-if="layout">
-      <component :is="layout">
-        <RouterView/>
-      </component>
-    </template>
-    <template v-else>
-      <RouterView/>
-    </template>
-  </div>
+    <button @click="fetchData">fetch</button>
+
+    <ul>
+        <li v-for="post in getPosts">
+            {{ post.title }}
+        </li>
+    </ul>
 </template>
