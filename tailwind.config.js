@@ -6,34 +6,40 @@ module.exports = {
     ],
     theme: {
         extend: {
-            animation: {
-                "slide-down": "slide-down .5s ease-in-out",
-                "slide-up": "slide-up .5s ease-in-out",
-            },
             keyframes: {
-                "slide-down": {
+                "slide-left-to-center": {
                     "0%": {
-                        transform: "translateY(-100%)"
+                        transform: "translateX(-100%)"
                     },
                     "100%": {
-                        transform: "translateY(0)"
+                        transform: "translateX(0%)"
                     }
                 },
-                "slide-up": {
+                "slide-center-to-left": {
                     "0%": {
-                        transform: "translateY(0)"
+                        transform: "translateX(0%)"
                     },
                     "100%": {
-                        transform: "translateY(-100%)"
+                        transform: "translateX(-100%)"
+                    }
+                },
+                "slide-right-to-center": {
+                    "0%": {
+                        transform: "translateX(100%)"
+                    },
+                    "100%": {
+                        transform: "translateX(0%)"
+                    }
+                },
+                "slide-center-to-right": {
+                    "0%": {
+                        transform: "translateX(0)"
+                    },
+                    "100%": {
+                        transform: "translateX(100%)"
                     }
                 },
             }
         },
-        screens: {
-            "lg": "1024px",
-            "2lg": "1080px",
-            "xl": "1280px",
-            "2xl": "1440px"
-        },
-    },
-};
+    }
+}
