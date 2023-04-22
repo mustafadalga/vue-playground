@@ -34,13 +34,14 @@ function handleInputEvent() {
 
         <input type="text"
                id="add"
+               autocomplete="off"
                v-model="input"
                :placeholder="placeholder"
                @input="handleInputEvent"
                @focus="focus=true"
                @blur="focus=false"
                @keyup.enter="handleKeyUpEvent"
-               class="w-full outline-0 focus:outline-0 placeholder-purple-500 text-black font-medium text-xs lg:text-sm font-switzer focus:placeholder-transparent"/>
+               class="w-full outline-0 focus:outline-0 appearance-none placeholder-purple-500 text-black font-medium text-xs lg:text-sm font-switzer focus:placeholder-transparent"/>
 
         <IconPlusCircle :fill-class="iconFillClass"
                         @click="handleKeyUpEvent"
