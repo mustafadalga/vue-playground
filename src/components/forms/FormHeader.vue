@@ -72,10 +72,10 @@ function iconClass(index: number): string {
     <ul class="flex">
         <li v-for="(component,index) in iconComponents"
             :class="liClass(index+1)"
-            class="flex items-center">
+            class="flex items-center after:transition-colors after:delay-150 after:duration-150">
             <div
                 :class="iconContainerClass(index+1)"
-                class="grid place-items-center w-12 h-12 rounded-full shrink-0	border border-solid">
+                class="grid place-items-center w-12 h-12 rounded-full shrink-0	border border-solid transition-colors">
 
                 <IconCheck v-if="(index+1)<activeStepIndex"
                            stroke-class="stroke-white" class="w-5"/>
@@ -83,7 +83,7 @@ function iconClass(index: number): string {
                     v-else
                     :is="component"
                     :class="iconClass(index+1)"
-                    class="w-5 h-5"/>
+                    class="w-5 h-5 transition-colors"/>
             </div>
         </li>
     </ul>

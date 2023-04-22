@@ -10,7 +10,7 @@ const focus = ref<boolean>(false);
 const emit = defineEmits<{
     (event: 'input', value: string): void
 }>();
-const iconFillClass = computed<string>(() => focus.value ? "fill-purple-500" : "fill-blue-500");
+const iconFillClass = computed<string>(() => focus.value ? "fill-purple-500" : "fill-gray-200");
 
 function handleKeyUpEvent() {
     if (input.value.length < minCharacterLength) return;
@@ -40,7 +40,7 @@ function handleInputEvent() {
                @focus="focus=true"
                @blur="focus=false"
                @keyup.enter="handleKeyUpEvent"
-               class="w-full outline-0 placeholder-purple-500 text-blue-500 font-medium text-xs lg:text-sm font-switzer focus:placeholder-transparent"/>
+               class="w-full outline-0 placeholder-purple-500 text-black font-medium text-xs lg:text-sm font-switzer focus:placeholder-transparent"/>
 
         <IconPlusCircle :fill-class="iconFillClass"
                         @click="handleKeyUpEvent"

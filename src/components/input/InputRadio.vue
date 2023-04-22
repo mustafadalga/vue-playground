@@ -37,7 +37,7 @@ const handleChange = (event: Event) => {
                :checked="option.checked"
                @input="handleChange"
                class="peer hidden" />
-        <label :for="option.id" class="grid h-6 w-6 cursor-pointer place-items-center rounded-full border border-solid border-blue-100 peer-checked:bg-purple-500 lg:h-8 lg:w-8">
+        <label :for="option.id" class="grid h-6 w-6 cursor-pointer place-items-center rounded-full bg-white border border-solid border-gray-200 peer-checked:border-purple-500 peer-checked:bg-purple-500 lg:h-8 lg:w-8">
             <IconCheck  class="w-3 h-3" stroke-class="stroke-white"/>
         </label>
 

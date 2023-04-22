@@ -44,7 +44,7 @@ const handleChange = (event: Event) => {
                @input="handleChange">
 
         <label :for="option.id"
-               class="grid place-items-center rounded border border-solid border-blue-500 min-w-[1rem] min-h-[1rem] w-4 h-4 cursor-pointer [&>svg]:hidden peer-checked:[&>svg]:block peer-checked:border-0 peer-checked:bg-purple-600">
+               class="grid place-items-center rounded border border-solid border-gray-200 min-w-[1rem] min-h-[1rem] w-4 h-4 cursor-pointer [&>svg]:hidden peer-checked:[&>svg]:block peer-checked:border-0 peer-checked:bg-purple-600">
             <IconCheck class="w-3 h-3" stroke-class="stroke-white"/>
         </label>
     </label>
