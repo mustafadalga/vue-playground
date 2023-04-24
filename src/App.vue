@@ -1,20 +1,28 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import { RouterView } from "vue-router";
+import ErrorBoundary from "@/components/ErrorBoundary.vue";
+import store from "@/store";
 import { computed } from "vue";
-import { RouterView, useRoute } from "vue-router";
 
-const route = useRoute();
-const layout = computed(() => route.meta.layout);
+const fullPath = computed<string>(() => store.getters.getCurrentFullPath())
+const no = computed<string>(() => store.getters.getNo())
 </script>
-
 <template>
-  <div id="app" class="grid h-screen">
-    <template v-if="layout">
-      <component :is="layout">
-        <RouterView/>
-      </component>
-    </template>
-    <template v-else>
-      <RouterView/>
-    </template>
-  </div>
+    <ErrorBoundary>
+        <div id="app">
+            <ul>
+                <li>
+                    <router-link to="/">Page vue.js</router-link>
+                </li>
+                <li>
+                    <router-link to="/react">Page react.js</router-link>
+                </li>
+                <li>
+                    <router-link to="/angular">Page angular</router-link>
+                </li>
+            </ul>
+            <RouterView/>
+            {{ fullPath }} - {{ no }}
+        </div>
+    </ErrorBoundary>
 </template>
