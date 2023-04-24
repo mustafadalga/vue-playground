@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onErrorCaptured } from "vue";
+import {  onErrorCaptured } from "vue";
 import { handleImportModuleError } from "@/utilities";
 import type { ComponentPublicInstance } from "vue";
 import { useRouter } from "vue-router";
@@ -17,7 +17,7 @@ const importModuleErrors: readonly string[] = [
 router.onError(handleImportModuleError);
 onErrorCaptured(handleError);
 
-function handleError(error: IError, vm: ComponentPublicInstance<{}, any, any, any, any>, info: string): boolean {
+function handleError(error: IError, vm: ComponentPublicInstance | null, info: string): boolean {
     if (importModuleErrors.some(err => error.message.includes(err))) {
         handleImportModuleError(error);
         return false;
