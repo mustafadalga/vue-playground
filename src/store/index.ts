@@ -1,25 +1,25 @@
 import { createStore } from "vuex";
 import type { InjectionKey } from 'vue'
 import type { Store } from 'vuex'
-import type { User } from "@/types";
+import type { User } from "@/types/types";
 
 export const key: InjectionKey<Store<State>> = Symbol()
 
 
 export interface State {
-  user: User | {}
+    user: User | {}
 }
 
 export const store = createStore<State>({
-  state: {
-    user: {}
-  },
-  getters: {
-    getUser: (state) => state.user
-  },
-  mutations: {
-    setUser(state, user: User): void {
-      state.user = user
+    state: {
+        user: {}
+    },
+    getters: {
+        getUser: (state: State): State["user"] => state.user
+    },
+    mutations: {
+        setUser(state, user: User): void {
+            state.user = user
+        }
     }
-  }
 })
