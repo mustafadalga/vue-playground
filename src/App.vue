@@ -1,7 +1,13 @@
-<script setup lang="ts">
-import DataFetcher from "@/components/DataFetcher.vue";
-</script>
-
 <template>
-    <DataFetcher/>
+    <Suspense>
+        <Users/>
+
+        <template #fallback>
+            <div>Loading...</div>
+        </template>
+    </Suspense>
 </template>
+
+<script setup lang="ts">
+import Users from "@/components/Users.vue";
+</script>
