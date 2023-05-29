@@ -180,8 +180,8 @@ function removeAttributesPlugin(options: Options): Plugin {
 
          
           const cleanCode=removeAttributes(code, optionList.attributes)
-           const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
-          // console.log("code",cleanCode)
+          console.log(`Transformed code: ${cleanCode}`); // This will log the transformed code
+
 
           return cleanCode;
       },
