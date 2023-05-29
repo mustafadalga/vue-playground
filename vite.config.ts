@@ -162,7 +162,8 @@ function removeAttributesPlugin(options: Options): Plugin {
 
   return {
       name: 'remove-attributes',
-      // enforce: 'pre',
+      enforce: 'pre',
+      apply: 'build',
       transform(code: string, id: string): string {
           if (hasIgnorePath(id)) {
               return code;
