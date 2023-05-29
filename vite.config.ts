@@ -162,7 +162,7 @@ function removeAttributesPlugin(options: Options): Plugin {
 
   return {
       name: 'remove-attributes',
-      enforce: 'pre',
+      enforce: 'post',
       transform(code: string, id: string): string {
           if (hasIgnorePath(id)) {
               return code;
@@ -193,14 +193,6 @@ export default defineConfig(({ mode }: { mode: string }) => {
 
   const config = {
     plugins: [
-      // {
-      //   name: 'add-class-ayhan',
-      //   // enforce: 'post',
-      //   transform(code: string, id: string): string {
-      //       const hs=code.replaceAll(`id="ayhan"`,`id="ayhan" class="melike"`)
-      //       return hs
-      //   },
-      // },
       removeAttributesPlugin({
         extensions: [ 'vue' ],
         attributes: [ 'data-testid' ]
