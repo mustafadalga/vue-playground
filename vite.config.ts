@@ -195,7 +195,7 @@ export default defineConfig(({ mode }: { mode: string }) => {
     plugins: [
       {
         name: 'add-class-ayhan',
-        enforce: 'pre',
+        enforce: 'post',
         transform(code: string, id: string): string {
             const hs=code.replaceAll(`id="ayhan"`,`id="ayhan" class="melike"`)
             return hs
