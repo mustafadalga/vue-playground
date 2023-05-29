@@ -164,20 +164,6 @@ function removeAttributesPlugin(options: Options): Plugin {
       name: 'remove-attributes',
       enforce: 'pre',
       transform(code: string, id: string): string {
-          if (hasIgnorePath(id)) {
-              return code;
-          }
-          if (hasIgnorePath(id, ignoredPaths)) {
-              return code;
-          }
-          if (!hasExtension(id, optionList)) {
-              return code;
-          }
-
-          // console.log("id",id)
-
-         
-          const cleanCode=removeAttributes(code, optionList.attributes)
           const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
           console.log("code",hs)
 
