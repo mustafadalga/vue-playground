@@ -1,5 +1,5 @@
 <template>
- <section>
+ <section id="ayhan">
     <h1 data-testid="h1-1">Hakan</h1>
     <h1 data-testid="h1-2">Hakan</h1>
     <h1 data-testid="h1-3">Hakan</h1>
@@ -14,5 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import Users from "@/components/Users.vue";
 </script>
+
+<style>
+.melike{
+    background-color: blue;
+}
+</style>
