@@ -193,14 +193,14 @@ export default defineConfig(({ mode }: { mode: string }) => {
 
   const config = {
     plugins: [
-      {
-        name: 'add-class-ayhan',
-        // enforce: 'post',
-        transform(code: string, id: string): string {
-            const hs=code.replaceAll(`id="ayhan"`,`id="ayhan" class="melike"`)
-            return hs
-        },
-      },
+      // {
+      //   name: 'add-class-ayhan',
+      //   // enforce: 'post',
+      //   transform(code: string, id: string): string {
+      //       const hs=code.replaceAll(`id="ayhan"`,`id="ayhan" class="melike"`)
+      //       return hs
+      //   },
+      // },
       removeAttributesPlugin({
         extensions: [ 'vue' ],
         attributes: [ 'data-testid' ]
