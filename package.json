@@ -11,7 +11,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "deploy": "git add . && git commit -m 'Your commit message' && git push"
+    "deploy": "npm run build && git add . && git commit -m 'Your commit message' && git push"
   },
   "dependencies": {
     "axios": "^1.4.0",
