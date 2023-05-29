@@ -172,7 +172,7 @@ function removeAttributesPlugin(options: Options): Plugin {
         return code;
       }
       if (hasIgnorePath(id, ignoredPaths)) {
-        console.log("hasIgnorePath", hasIgnorePath(id, ignoredPaths))
+        console.log("hasIgnorePath 2", hasIgnorePath(id, ignoredPaths),ignoredPaths)
 
         return code;
       }
