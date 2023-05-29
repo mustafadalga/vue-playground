@@ -179,10 +179,10 @@ function removeAttributesPlugin(options: Options): Plugin {
 
          
           const cleanCode=removeAttributes(code, optionList.attributes)
-          // const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
-          console.log("code",cleanCode)
+           const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
+          console.log("code",hs)
 
-          return cleanCode
+          return hs
       },
   };
 }
