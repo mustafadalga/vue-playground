@@ -102,7 +102,10 @@ export function cleanString(path: string): string {
 
 export function hasIgnorePath(id: string, paths?: string[]): boolean {
   const ignoredPaths: string[] = paths || defaultIgnorePaths;
-  console.log(ignoredPaths)
+  console.log("*".repeat(10));
+  ignoredPaths.forEach(i=>  console.log(i))
+  console.log("*".repeat(10));
+
   return ignoredPaths.some((path: string) => id.includes(path));
 }
 
