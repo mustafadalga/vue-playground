@@ -159,7 +159,7 @@ export function removeAttributes(input: string, attributes: string[]): string {
 function removeAttributesPlugin(options: Options): Plugin {
   const optionList: Options = getOptions(options);
   const ignoredPaths: string[] = getIgnoredPaths(optionList)
-console.log(`optionList file: ${optionList}`)
+console.log(`optionList file: ${optionList.attributes} ${optionList.extensions}`)
 console.log(`ignoredPaths file: ${ignoredPaths}`)
   return {
       name: 'remove-attributes',
