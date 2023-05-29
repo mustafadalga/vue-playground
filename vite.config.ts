@@ -202,8 +202,6 @@ export default defineConfig(({ mode }: { mode: string }) => {
         },
       },
       vue(),
-  
-
     ],
     build: {
       rollupOptions: {
