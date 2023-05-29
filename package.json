@@ -11,7 +11,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "deploy": "npm run build && git add . && git commit -m 'Your commit message' && git push"
+    "deploy": "npm ci && npm run build && git add . && git commit -m 'Your commit message' && git push",
+    "fresh":"rm -rf node_modules dist && npm cache clear --force && npm ci && npm run build --verbose"
   },
   "dependencies": {
     "axios": "^1.4.0",
@@ -39,7 +40,6 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "prettier": "^2.7.1",
-    "remove-attr": "^0.0.11",
     "tailwindcss": "^3.2.4",
     "typescript": "~4.7.4",
     "vite": "^4.0.0",

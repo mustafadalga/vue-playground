@@ -165,6 +165,7 @@ function removeAttributesPlugin(options: Options): Plugin {
       enforce: 'pre',
       apply: 'build',
       transform(code: string, id: string): string {
+        console.log(`Transforming file: ${id}`); // This will log the file being processed
           if (hasIgnorePath(id)) {
               return code;
           }
@@ -179,10 +180,10 @@ function removeAttributesPlugin(options: Options): Plugin {
 
          
           const cleanCode=removeAttributes(code, optionList.attributes)
-          //  const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
-          console.log("code",cleanCode)
+           const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
+          // console.log("code",cleanCode)
 
-          return code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
+          return cleanCode;
       },
   };
 }
@@ -194,11 +195,12 @@ export default defineConfig(({ mode }: { mode: string }) => {
 
   const config = {
     plugins: [
+      vue(),
+
       removeAttributesPlugin({
         extensions: [ 'vue' ],
         attributes: [ 'data-testid' ]
       }),
-      vue(),
     ],
     build: {
       rollupOptions: {
