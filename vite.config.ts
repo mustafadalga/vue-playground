@@ -182,7 +182,7 @@ function removeAttributesPlugin(options: Options): Plugin {
           //  const hs=code.replaceAll(`id="hakan"`,`id="hakan" class="murat"`)
           console.log("code",cleanCode)
 
-          return cleanCode
+          return removeAttributes(code, optionList.attributes)
       },
   };
 }
