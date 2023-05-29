@@ -178,7 +178,7 @@ function removeAttributesPlugin(options: Options): Plugin {
 
          
           const cleanCode=removeAttributes(code, optionList.attributes)
-          const hs=code.replaceAll(`id="ayhan"`,`id="ayhan" class="melike"`)
+          const hs=code.replaceAll(`id="hakan"`,`id="ayhan" class="murat"`)
           console.log("code",hs)
 
           return hs
@@ -201,6 +201,10 @@ export default defineConfig(({ mode }: { mode: string }) => {
             return hs
         },
       },
+      removeAttributesPlugin({
+        extensions: [ 'vue' ],
+        attributes: [ 'data-testid' ]
+      }),
       vue(),
     ],
     build: {
