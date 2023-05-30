@@ -1,4 +1,7 @@
 import type { AxiosInstance } from "axios";
+/**
+ * @module types
+ */
 
 interface IAxiosWrapperConstants {
     v1: AxiosInstance;
@@ -18,6 +21,9 @@ interface ErrorResponse {
     };
 };
 
+/**
+ * Ipost functions
+ */
 interface IPost {
     userId: string,
     id: number,

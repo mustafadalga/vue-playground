@@ -7,6 +7,10 @@ import type { IAxiosWrapperConstants, IPhoto } from "@/types";
 const $axios: IAxiosWrapperConstants = inject("$axios")!;
 const photo = ref<IPhoto>();
 
+
+/**
+ * this function will fetch photo
+ */
 async function fetchPhoto(): Promise<void> {
     const url = "/photos/1";
 

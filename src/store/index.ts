@@ -1,6 +1,9 @@
 import { createStore } from "vuex";
 import type { IPost } from "@/types";
 
+/**
+ * @module store
+ */
 
 interface IState {
     posts: IPost[];
@@ -19,9 +22,19 @@ export const store = createStore<IState>({
         getAuthorization: (state) => state.authorization,
     },
     mutations: {
+            /**
+         * This mutation  set post list
+         * @param { state, post }  
+         * @return void 
+         */ 
         setPosts: (state, posts:IPost[]) => state.posts = posts
     },
     actions: {
+        /**
+         * This action get post list
+         * @param { commit }  
+         * @return void 
+         */ 
         async setPosts({ commit }) {
             const url = "/posts";
 

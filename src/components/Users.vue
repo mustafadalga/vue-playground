@@ -6,6 +6,9 @@ import type { IUser } from "@/types";
 const {fetchUsers} = useFetchUsers()
 const users = ref<IUser[]>([]);
 
+/**
+ * this function will fetch user list
+ */
 async function handleUsers() {
     users.value = await fetchUsers();
 }

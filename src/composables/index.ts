@@ -1,6 +1,10 @@
 import { inject } from "vue";
 import type { IAxiosWrapperConstants, IUser } from "@/types";
 
+/**
+ * this function will return users
+ * @returns users
+ */
 function useFetchUsers() {
     const $axios: IAxiosWrapperConstants = inject("$axios")!;
 

@@ -7,7 +7,9 @@ const store = useStore();
 
 const posts = computed<IPost[]>(() => store.getters.getPosts);
 
-
+/**
+ * this function will fetch posts
+ */
 function fetchPosts() {
     store.dispatch("setPosts");
 }

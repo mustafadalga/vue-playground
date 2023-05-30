@@ -4,6 +4,9 @@ import type { App } from "vue";
 import type { AxiosRequestConfig, AxiosResponse, AxiosError,InternalAxiosRequestConfig } from "axios";
 import type { IAxiosWrapperConstants } from "@/types";
 
+/**
+ * @module axios-wrapper
+ */
 
 interface IExtendedAxiosRequestConfig extends AxiosRequestConfig {
     headers: {
@@ -77,7 +80,10 @@ function handleInterceptorsRequest(version: string, config: IExtendedAxiosReques
 function handleInterceptorsResponse(response: AxiosResponse): AxiosResponse {
     return response;
 }
-
+/**
+ * this function handleInterceptorsResponseError
+ * @param { object } error
+ */
 function handleInterceptorsResponseError(error: IExtendedAxiosError): any {
     if (Object.prototype.hasOwnProperty.call(error, "toJSON") && error.toJSON().message == "Network Error") {
         return;
