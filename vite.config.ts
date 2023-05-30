@@ -28,13 +28,9 @@ const defaultIgnorePaths: string[] = [
   '.DS_Store', // macOS
   'Thumbs.db', // Windows
 
-  // Build output
-  'dist',
-  'build',
 
   // Configuration files
   '.env', // Environment variables
-  'config', // General config folder
 
   // Logs
   'logs',
@@ -54,16 +50,7 @@ const defaultIgnorePaths: string[] = [
   'angular.json', // Angular CLI configuration
   'browserslist', // Browser compatibility list for Angular
 
-  // Svelte
-  'public/build', // Default output directory for Svelte
-
-  // Lit
-  'lit.config.js', // Lit configuration file
-
-  // Other
-  'coverage', // Code coverage reports
   '.cache', // Cache files for various tools
-  'public' // Folder commonly used for static assets
 ];
 
 export function getOptions(options: Options): Options {
