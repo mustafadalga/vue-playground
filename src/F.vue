@@ -44,6 +44,33 @@ const strokeDashoffset = computed(() => {
   return circumference - props.progress / 100 * circumference
 })
 
+interface Option{
+  checked: boolean,
+  deniz:string,
+  ankara:string,
+}
+
+/**
+ * Returns a toggleOption object.
+ * @param {Object} option - The option object.
+ * @param {Boolean} option.checked - The checked state of the option.
+ * @param {String} option.deniz - denizli
+ * @param {Number} option.ankara - burada günsüz
+ */
+function deneme1(option:Option){
+console.log("deneme1",option)
+}
+
+deneme1({checked:true,deniz:"",ankara:""})
+deneme2({checked:true,deniz:"",ankara:""})
+
+/**
+ *
+ * @param option
+ */
+function deneme2(option:Option){
+  console.log("deneme2",option)
+}
 </script>
 <template>
   <svg :height="radius * 2" :width="radius * 2" @click="convertTheThings(1); emit('save', circumference);">
@@ -62,5 +89,3 @@ svg {
   transform-origin: 50% 50%;
 }
 </style>
-
-<script></script>

@@ -6,6 +6,7 @@ import type { IAxiosWrapperConstants } from "@/types";
 
 /**
  * @module axios-wrapper
+ * @desc burada bir merapper kullanışmış
  */
 
 interface IExtendedAxiosRequestConfig extends AxiosRequestConfig {

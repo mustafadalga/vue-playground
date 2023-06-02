@@ -1,15 +1,34 @@
-<script lang="ts" setup>
-
-
-import { inject, ref } from "vue";
+<script setup>
+import { computed, inject, ref } from "vue";
 import type { IAxiosWrapperConstants, IPhoto } from "@/types";
 
-const $axios: IAxiosWrapperConstants = inject("$axios")!;
-const photo = ref<IPhoto>();
+const $axios: IAxiosWrapperConstants = inject("$axios");
 
 
 /**
- * this function will fetch photo
+ * Returns a phpt object.
+ * @param {Object} option - The option object.
+ * @param {Boolean} option.checked - The checked state of the option.
+ * @param {String} option.deniz - denizli
+ * @param {Number} option.ankara - burada günsüz
+ */
+const photo = ref<string>("");
+
+/**
+ * Returns a toggleOption object.
+ * @param {Object} option - The option object.
+ * @param {Boolean} option.checked - The checked state of the option.
+ * @param {String} option.deniz - denizli
+ * @param {Number} option.ankara - burada günsüz
+ */
+const a=computed<string>(()=>"ww")
+
+/**
+ * Returns a toggleOption object.
+ * @param {Object} option - The option object.
+ * @param {Boolean} option.checked - The checked state of the option.
+ * @param {String} option.deniz - denizli
+ * @param {Number} option.ankara - burada günsüz
  */
 async function fetchPhoto(): Promise<void> {
     const url = "/photos/1";
