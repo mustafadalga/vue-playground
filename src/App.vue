@@ -1,26 +1,36 @@
 <script setup lang="ts">
-import Profile from "@/components/Profile.vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
-import type { User } from "@/types/types";
-import { key } from "@/store";
-
-const store = useStore(key);
-const user: User = {
-    username: "mustafadalga",
-    fullName: "Mustafa Dalga",
-    job: "Software Developer",
-    age: 24,
-    followers: 100,
-    following: 55,
-    repositories: 23
+import useCheckUserPosts from "@/composables/useCheckUserPosts";
+const store = useStore();
+const posts = computed(() => store.getters.getPosts);
+const isLoaded = computed<boolean>(
+  () => store.getters.getApisLoadState.posts?.isLoaded
+);
+function changeActiveUserID() {
+  store.commit("resetStore");
+  const id = Math.floor(Math.random() * 100) + 1;
+  store.commit("setActiveUserID", id);
 }
 
-
-store.commit("setUser", user);
+useCheckUserPosts();
 </script>
 
 <template>
-    <div id="app" class="p-10">
-        <Profile class="mx-auto max-w-lg"/>
+  <div id="app" class="p-10 grid gap-4">
+    <div>
+      <button
+        type="button"
+        @click="changeActiveUserID"
+        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
+      >
+        Get random user Posts
+      </button>
     </div>
+    <pre v-if="isLoaded">
+    {{ posts }}
+    </pre>
+
+    <h1 v-else class="text-3xl">Loading...</h1>
+  </div>
 </template>
