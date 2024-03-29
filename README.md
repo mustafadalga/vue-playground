@@ -1,7 +1,4 @@
 ## Vue playground - demo examples.
 
 
-
-### Dynamic layouts:
-
-* Demo:https://dynamic-vue-layouts.netlify.app/
+https://25-movies-transition-group--nimble-crepe-9b9d4e.netlify.app/
