@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import { keywords } from "@/data/image-keywords";
 
 interface Movie {
   title: string,
@@ -9,15 +8,16 @@ interface Movie {
 }
 
 defineProps({
-  movie: Object as PropType<Movie>
+  movie: {
+    type: Object as PropType<Movie>,
+    required: true
+  }
 })
 
-const randomIndex = Math.floor(Math.random() * keywords.length);
-const id = keywords[randomIndex];
 </script>
 
 <template>
-  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <div class="max-w-sm rounded overflow-hidden bg-indigo-200 shadow-lg">
     <img :src="movie.image" alt="Random Image">
 
     <div class="px-6 py-4">
