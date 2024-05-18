@@ -1,60 +1,33 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { movies } from "@/data/movies";
-import Kinds from "@/components/Kinds.vue";
-import MovieCard from "@/components/MovieCard.vue";
-import Input from "@/components/Input.vue";
+import useAxios from "@/composables/useAxios";
+import { useStore } from "vuex";
+import { computed, watch } from "vue";
 
-const form = ref({
-  kind: "",
-  title: "",
-  showFilter: true
-})
-const filteredMovies = computed(() => {
-  return movies.filter((movie) => (!form.value.kind || (form.value.kind && movie.kinds.includes(form.value.kind))) && movie.title.toLowerCase().includes(form.value.title.toLowerCase()))
-})
+const store = useStore();
+const { axios } = useAxios();
+const activeClient = computed(() => store.getters.getActiveclient);
 
-function onClear() {
-  form.value.title = "";
-  form.value.kind = "";
+function changeClient() {
+  const clients = [ 1, 2, 3, 4, 5 ];
+  const randomIDClient = clients[Math.floor(Math.random() * clients.length) + 1];
+  store.commit("cancelAxiosCancelToken");
+  store.commit("setAxiosCancelToken");
+  store.commit("setActiveClient", randomIDClient);
+}
+
+watch(() => activeClient.value, getUsers)
+
+async function getUsers() {
+  const response = await axios.get("https://reqres.in/api/users?delay=3");
+  //...
 }
 </script>
 
 <template>
   <main class="p-10 grid gap-5">
-    <button @click="form.showFilter=!form.showFilter"
-            class="text-indigo-500 bg-indigo-100 border border-solid border-indigo-300 px-5 py-1 rounded-lg ml-auto">
-      Hide Filter
+    <button type="button" @click="changeClient()" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded">Change
+      Client
     </button>
-
-    <Transition enter-active-class="fade-in-fwd" leave-active-class="fade-out-bck">
-      <section v-show="form.showFilter" class="grid gap-5 place-items-end">
-        <Kinds :onClear="onClear"
-               :onSelect="selectedKind=>form.kind=selectedKind"/>
-
-        <Input v-model="form.title" class="max-w-lg"/>
-      </section>
-    </Transition>
-
-    <div class="mx-auto grid grid-cols-4 gap-4">
-      <TransitionGroup name="list">
-        <MovieCard v-for="movie in filteredMovies" :movie="movie"
-                   :key="movie.title"/>
-      </TransitionGroup>
-    </div>
   </main>
 
 </template>
-
-<style>
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.3s ease;
-}
-
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(15px);
-}
-</style>
