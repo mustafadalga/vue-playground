@@ -64,16 +64,15 @@ function resetState() {
     </div>
 
     <div class="grid grid-cols-3 gap-3">
-      <span></span>
       <button type="button" :disabled="!!statusMessage"
               @click="handleInput(0)"
 
-              class="border border-solid border-black">
+              class="border border-solid border-black col-start-2">
         0
       </button>
       <button type="button" :disabled="!!statusMessage"
               @click="onClear"
-              class="border border-solid border-black">
+              class="border border-solid border-black col-start-3">
         Clear
       </button>
     </div>
